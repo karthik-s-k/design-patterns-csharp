@@ -20,3 +20,5 @@ Benefit of Singleton Pattern:
 2. Reduce the overhead of creating instance again and again so improve performance
 3. Lazy Loading: instance will be created only when needed, improve application loading
 4. Only one instance, so save the resource
+
+Reference: http://www.advancesharp.com/blog/1230/singleton-design-pattern-in-c-with-real-examples
