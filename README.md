@@ -22,3 +22,9 @@ Benefit of Singleton Pattern:
 4. Only one instance, so save the resource
 
 Reference: http://www.advancesharp.com/blog/1230/singleton-design-pattern-in-c-with-real-examples
+
+## Strategy pattern
+
+## Observer pattern
+
+## Decorator pattern
