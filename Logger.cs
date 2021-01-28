@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace design_patterns_csharp
 {
-    class Logger
+    public sealed class Logger
     {
         private Logger()
         {
@@ -16,23 +16,43 @@ namespace design_patterns_csharp
 
         private static StreamWriter _output = null;
         private static Logger _logger = null;
-        private static object lockObject = typeof(Logger);
+        private static readonly object lockObject = typeof(Logger);
         public static string _LogFile = "LogDetails.log"; //File will be in debug folder
         public static int _LogLevel = 1;
 
         public static Logger GetInstance()
         {
-            //lock object to make it thread safe (multi threaded environment)
-            lock (lockObject)
+            //Thread Safe Using Double Check Locking
+            if (_logger == null)
             {
-                if (_logger == null)
+                //lockObject - Simple Thread Safe (multi threaded environment)
+                lock (lockObject)
                 {
-                    _logger = new Logger();
+                    if (_logger == null)
+                    {
+                        _logger = new Logger();
+                    }
                 }
-            }
+            }            
 
             return _logger;
         }
+
+        //Thread Safe without using locking but not lazy instantiation
+
+        //Static constructors in C# are specified to execute only when an instance of the class is created 
+        //    or a static member is referenced, and execute only once per AppDomain. 
+        //It is faster than the previous example because there is no locking mechanism.
+
+
+        //private static readonly Logger _logger = new Logger();
+        //static Logger() { }  // Static constructor added
+        //private Logger() { }
+
+        //public static Logger GetInstance()
+        //{
+        //    return _logger;
+        //}
 
         public void logError(string logMessage, int severity = 1)
         {
