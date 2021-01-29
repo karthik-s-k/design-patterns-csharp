@@ -45,4 +45,21 @@ Reference: https://www.dofactory.com/net/strategy-design-pattern
 
 ## Observer pattern
 
+The Observer Design Pattern is a Software Design Pattern in which an object (called as Subject) maintains a list of its dependents (called as Observers) and notifies them automatically whenever any state changes by calling one of their methods.
+
+Real time examples where we need to use:
+
+1. Stock value update
+2. "Out of stock" to "Available" notification to users.
+3. Theme/Color change across application on an event.
+4. Notify administrator if a system has error/alert.
+
+Benefit of Strategy pattern:
+
+1. It supports the principle of loose coupling between objects that interact with each other
+2. It allows sending data to other objects effectively without any change in the Subject or Observer classes
+3. Observers can be added/removed at any point in time
+
+Reference: https://www.dofactory.com/net/observer-design-pattern
+
 ## Decorator pattern
