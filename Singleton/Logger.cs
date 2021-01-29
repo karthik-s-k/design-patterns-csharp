@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace design_patterns_csharp
 {
@@ -65,7 +62,33 @@ namespace design_patterns_csharp
                         _output = new StreamWriter(_LogFile, true, Encoding.Default);
                     }
 
-                    _output.WriteLine(DateTime.Now + " | " + severity + " | " + logMessage, new object[0]);
+                    _output.WriteLine("Error " + " | " + DateTime.Now + " | " + severity + " | " + logMessage, new object[0]);
+
+                    if (_output != null)
+                    {
+                        _output.Close();
+                        _output = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message, new object[0]);
+            }
+        }
+
+        public void logInfo(string logMessage, int severity = 1)
+        {
+            try
+            {
+                if (severity <= _LogLevel)
+                {
+                    if (_output == null)
+                    {
+                        _output = new StreamWriter(_LogFile, true, Encoding.Default);
+                    }
+
+                    _output.WriteLine("Info " + " | " + DateTime.Now + " | " + severity + " | " + logMessage, new object[0]);
 
                     if (_output != null)
                     {
