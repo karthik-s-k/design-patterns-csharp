@@ -14,7 +14,7 @@ Real time examples where we need to use:
 4. Hardware access
 5. Shopping Cart
 
-Benefit of Singleton Pattern:
+Benefits of Singleton Pattern:
 
 1. Single point of access to instance, so is easy to maintain
 2. Reduce the overhead of creating instance again and again so improve performance
@@ -35,7 +35,7 @@ Real time examples where we need to use:
 3. Handle discount based on coupon/reward points/happy hour.
 4. Travel between 2 places with different modes (bike/car/bus/train/flight/ship)
 
-Benefit of Strategy pattern:
+Benefits of Strategy pattern:
 
 1. It’s easy to switch between different algorithms (strategies) in runtime because you’re using polymorphism in the interfaces.
 2. Clean code because you avoid conditional-infested code (not complex).
@@ -54,7 +54,7 @@ Real time examples where we need to use:
 3. Theme/Color change across application on an event.
 4. Notify administrator if a system has error/alert.
 
-Benefit of Strategy pattern:
+Benefits of Observer pattern:
 
 1. It supports the principle of loose coupling between objects that interact with each other
 2. It allows sending data to other objects effectively without any change in the Subject or Observer classes
