@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using design_patterns_csharp.Strategy;
+using design_patterns_csharp.Observer;
+using System.Threading;
 
 namespace design_patterns_csharp
 {
@@ -52,6 +54,45 @@ namespace design_patterns_csharp
 
             log.logInfo("Sorting end");
 
+            log.logInfo("Stock monitoring start");
+
+            //Observer design pattern is used to notify listeners when stock prices change
+            IBM ibm = new IBM("IBM", 120.00);
+            Investor john = new Investor("John");
+            Investor mary = new Investor("Mary");
+            Investor chris = new Investor("Chris"); 
+            Investor ana = new Investor("Ana");
+
+            log.logInfo("Attaching John");
+            ibm.Attach(john);
+            log.logInfo("Attaching Mary");
+            ibm.Attach(mary);
+            log.logInfo("Attaching Chris");
+            ibm.Attach(chris);
+            log.logInfo("Attaching Ana");
+            ibm.Attach(ana);
+
+            // Fluctuating prices will notify investors
+            for (int i=0; i<8; i++)
+            {
+                if (i%2 == 0)
+                {
+                    ibm.Price += 1;
+                }
+                else
+                {
+                    ibm.Price -= 0.5;
+                }
+                Thread.Sleep(3000);
+
+                if (ibm.Price > 122)
+                {
+                    log.logInfo("Detaching Ana");
+                    ibm.Detach(ana);
+                }
+            }
+
+            log.logInfo("Stock monitoring end");
 
             log.logInfo("Program end");
                         
